@@ -1,0 +1,17 @@
+USE ProjectL
+GO
+
+DROP FUNCTION GetLastID
+go
+
+CREATE FUNCTION GetLastID()
+RETURNS INTEGER
+AS
+BEGIN
+	DECLARE @result INTEGER;
+	SET @result = (SELECT (MAX(ID)) FROM Audit)
+	RETURN (@result);
+END
+go
+
+SELECT dbo.GetLastID();
